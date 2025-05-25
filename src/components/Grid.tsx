@@ -3,13 +3,8 @@
 import { TopLeftAndBottomRight } from "./TopLeftAndBottomRight";
 import WideRectangle from "./BottomLeftGroup";
 import { ArchRectangle } from "./ArchRectangle";
-import { WobbleCard } from "./ui/wobble-card";
 import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
-import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import { SpinningText } from "./magicui/spinning-text";
-import { PulsatingButton } from "./magicui/pulsating-button";
-import { InteractiveHoverButton } from "./magicui/interactive-hover-button";
-import { ShimmerButton } from "./magicui/shimmer-button";
 import Image from "next/image";
 import { People } from "./People";
 
@@ -188,11 +183,13 @@ const Grid = () => {
           </div>
         </TopLeftAndBottomRight>
       </div>
-      <img
+      <Image
         src="/images/image.png"
         alt="Center"
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-60 lg:h-60 xl:w-[270px] xl:h-[270px]"
         style={{ pointerEvents: "none" }}
+        width={270}
+        height={270}
       />
       <SpinningText
         radius={22}

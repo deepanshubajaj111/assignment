@@ -39,6 +39,7 @@ export const BackgroundGradientAnimation = ({
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
+
   useEffect(() => {
     document.body.style.setProperty(
       "--gradient-background-start",
@@ -56,22 +57,42 @@ export const BackgroundGradientAnimation = ({
     document.body.style.setProperty("--pointer-color", pointerColor);
     document.body.style.setProperty("--size", size);
     document.body.style.setProperty("--blending-value", blendingValue);
-  }, []);
+  }, [
+    gradientBackgroundStart,
+    gradientBackgroundEnd,
+    firstColor,
+    secondColor,
+    thirdColor,
+    fourthColor,
+    fifthColor,
+    pointerColor,
+    size,
+    blendingValue,
+  ]);
 
   useEffect(() => {
     function move() {
       if (!interactiveRef.current) {
         return;
       }
-      setCurX(curX + (tgX - curX) / 20);
-      setCurY(curY + (tgY - curY) / 20);
-      interactiveRef.current.style.transform = `translate(${Math.round(
-        curX
-      )}px, ${Math.round(curY)}px)`;
+      setCurX((prevCurX) => {
+        const nextX = prevCurX + (tgX - prevCurX) / 20;
+        interactiveRef.current!.style.transform = `translate(${Math.round(
+          nextX
+        )}px, ${Math.round(curY)}px)`;
+        return nextX;
+      });
+      setCurY((prevCurY) => {
+        const nextY = prevCurY + (tgY - prevCurY) / 20;
+        interactiveRef.current!.style.transform = `translate(${Math.round(
+          curX
+        )}px, ${Math.round(nextY)}px)`;
+        return nextY;
+      });
     }
-
     move();
-  }, [tgX, tgY]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tgX, tgY]); // intentionally not including curX/curY to avoid infinite loop
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
@@ -120,47 +141,57 @@ export const BackgroundGradientAnimation = ({
       >
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_var(--first-color)_0,_var(--first-color)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:center_center]`,
-            `animate-first`,
-            `opacity-100`
+            "absolute",
+            "[background:radial-gradient(circle_at_center,var(--first-color)_0,var(--first-color)_50%)_no-repeat]",
+            "[mix-blend-mode:var(--blending-value)]",
+            "w-[var(--size)] h-[var(--size)]",
+            "top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]",
+            "animate-first",
+            "opacity-100"
           )}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.8)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-400px)]`,
-            `animate-second`,
-            `opacity-100`
+            "absolute",
+            "[background:radial-gradient(circle_at_center,rgba(var(--second-color),0.8)_0,rgba(var(--second-color),0)_50%)_no-repeat]",
+            "[mix-blend-mode:var(--blending-value)]",
+            "w-[var(--size)] h-[var(--size)]",
+            "top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]",
+            "animate-second",
+            "opacity-100"
           )}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.8)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%+400px)]`,
-            `animate-third`,
-            `opacity-100`
+            "absolute",
+            "[background:radial-gradient(circle_at_center,rgba(var(--third-color),0.8)_0,rgba(var(--third-color),0)_50%)_no-repeat]",
+            "[mix-blend-mode:var(--blending-value)]",
+            "w-[var(--size)] h-[var(--size)]",
+            "top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]",
+            "animate-third",
+            "opacity-100"
           )}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.8)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-200px)]`,
-            `animate-fourth`,
-            `opacity-70`
+            "absolute",
+            "[background:radial-gradient(circle_at_center,rgba(var(--fourth-color),0.8)_0,rgba(var(--fourth-color),0)_50%)_no-repeat]",
+            "[mix-blend-mode:var(--blending-value)]",
+            "w-[var(--size)] h-[var(--size)]",
+            "top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]",
+            "animate-fourth",
+            "opacity-70"
           )}
         ></div>
         <div
           className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.8)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-800px)_calc(50%+800px)]`,
-            `animate-fifth`,
-            `opacity-100`
+            "absolute",
+            "[background:radial-gradient(circle_at_center,rgba(var(--fifth-color),0.8)_0,rgba(var(--fifth-color),0)_50%)_no-repeat]",
+            "[mix-blend-mode:var(--blending-value)]",
+            "w-[var(--size)] h-[var(--size)]",
+            "top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]",
+            "animate-fifth",
+            "opacity-100"
           )}
         ></div>
 
@@ -169,9 +200,11 @@ export const BackgroundGradientAnimation = ({
             ref={interactiveRef}
             onMouseMove={handleMouseMove}
             className={cn(
-              `absolute [background:radial-gradient(circle_at_center,_rgba(var(--pointer-color),_0.8)_0,_rgba(var(--pointer-color),_0)_50%)_no-repeat]`,
-              `[mix-blend-mode:var(--blending-value)] w-full h-full -top-1/2 -left-1/2`,
-              `opacity-70`
+              "absolute",
+              "[background:radial-gradient(circle_at_center,rgba(var(--pointer-color),0.8)_0,rgba(var(--pointer-color),0)_50%)_no-repeat]",
+              "[mix-blend-mode:var(--blending-value)]",
+              "w-full h-full -top-1/2 -left-1/2",
+              "opacity-70"
             )}
           ></div>
         )}

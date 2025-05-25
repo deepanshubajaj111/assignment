@@ -2,36 +2,45 @@
 
 import React, { useState } from "react";
 import { useMotionValue } from "motion/react";
+import Image from "next/image";
 
-export const AnimatedTooltip = ({
-  items,
-}: {
-  items: {
-    id: number;
-    name: string;
-    designation: string;
-    image: string;
-  }[];
-}) => {
+interface Item {
+  id: number;
+  name: string;
+  designation: string;
+  image: string;
+}
+
+interface AnimatedTooltipProps {
+  items: Item[];
+}
+
+export const AnimatedTooltip: React.FC<AnimatedTooltipProps> = ({ items }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const springConfig = { stiffness: 100, damping: 5 };
   const x = useMotionValue(0);
 
-  const handleMouseMove = (event: any) => {
-    const halfWidth = event.target.offsetWidth / 2;
+  console.log("Hovered Index:", hoveredIndex);
+  console.log(springConfig);
+
+  const handleMouseMove = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>
+  ) => {
+    const target = event.target as HTMLImageElement;
+    const halfWidth = target.offsetWidth / 2;
     x.set(event.nativeEvent.offsetX - halfWidth);
   };
 
   return (
     <>
-      {items.map((item, idx) => (
+      {items.map((item) => (
         <div
           className="group relative -mr-4"
-          key={item.name}
+          key={item.id}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
-          <img
+          <Image
             onMouseMove={handleMouseMove}
             height={100}
             width={100}
