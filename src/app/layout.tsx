@@ -1,16 +1,6 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Particles } from "@/components/magicui/particles";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,11 +13,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--main-bg)]`}
-      >
+    <html lang="en" className="min-h-screen">
+      <body className="font-['Plus_Jakarta_Sans',sans-serif] antialiased bg-[var(--main-bg)] min-h-screen relative overflow-hidden">
         {children}
+        <Particles
+          className="absolute inset-0 z-0"
+          quantity={200}
+          ease={80}
+          color="#ffffffd0"
+          refresh
+        />
       </body>
     </html>
   );
