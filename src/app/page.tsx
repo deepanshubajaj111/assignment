@@ -1,22 +1,22 @@
 "use client";
 
-import { BorderBeam } from "@/components/magicui/border-beam";
-import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
-import { TypingAnimation } from "@/components/magicui/typing-animation";
-import { People } from "@/components/People";
-import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+import Image from "next/image";
 import "@fontsource/plus-jakarta-sans";
+import { People } from "@/components/People";
 import "@fontsource/plus-jakarta-sans/600.css";
 import { Camera, GitBranch, Sparkles } from "lucide-react";
-import Image from "next/image";
+import { BorderBeam } from "@/components/magicui/border-beam";
+import { TypingAnimation } from "@/components/magicui/typing-animation";
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 
 import { motion } from "motion/react";
 import {
   Modal,
   ModalBody,
-  ModalContent,
   ModalFooter,
   ModalTrigger,
+  ModalContent,
 } from "@/components/ui/animated-modal";
 import { SparklesText } from "@/components/magicui/sparkles-text";
 
@@ -171,8 +171,482 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen max-w-[var(--container)] mx-auto w-full py-[32px]">
-      <div className="grid grid-cols-4 grid-rows-2 gap-7 flex-1 h-full">
+    <div className="flex flex-col min-h-screen max-w-[var(--container)] mx-auto w-full py-4 sm:py-6 lg:py-8 px-4 sm:px-6">
+      <div className="md:hidden space-y-4">
+        <div className="rounded-3xl bg-[radial-gradient(circle_at_50%_105%,_rgb(187,165,244)_0%,_rgb(101,58,216)_100%)] min-h-[400px] flex flex-col">
+          <div className="flex-1 flex items-center justify-center py-8">
+            <h1 className="text-[#FAF9FF] text-4xl sm:text-5xl font-bold text-center">
+              <SparklesText>Template Ai</SparklesText>
+            </h1>
+          </div>
+          <div className="flex-1 flex items-center justify-center relative">
+            <div className="bg-[var(--main-bg)] w-full h-32 rounded-t-full mx-8">
+              <Image
+                src="/images/image.png"
+                width={150}
+                height={150}
+                alt=""
+                className="hidden lg:block absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4 p-6">
+            <div className="bg-[#653ad8]/30 rounded-2xl p-4">
+              <div className="bg-[#110A240] rounded-full h-12 w-12 mb-3 flex p-1">
+                <button className="bg-[radial-gradient(circle_at_50%_0%,_#FFDEAD_0%,_#E27F5A_47%,_#691616_100%)] rounded-full w-full flex items-center justify-center">
+                  <GitBranch className="text-white w-4 h-4" />
+                </button>
+              </div>
+              <span className="text-[#E6E3FF] text-sm font-bold block">
+                Branching paths
+              </span>
+              <span className="text-[#ACA0E4] text-xs">
+                Explore multiple prompt directions.
+              </span>
+            </div>
+            <div className="bg-[#653ad8]/30 rounded-2xl p-4">
+              <div className="bg-[#110A240] rounded-full h-12 w-12 mb-3 flex p-1">
+                <button className="bg-[radial-gradient(circle_at_50%_0%,_#BBA5F4_0%,_#5F33D6_100%)] rounded-full w-full flex items-center justify-center">
+                  <GitBranch className="text-white w-4 h-4" />
+                </button>
+              </div>
+              <span className="text-[#E6E3FF] text-sm font-bold block">
+                Ai journey
+              </span>
+              <span className="text-[#ACA0E4] text-xs">
+                Boost your prompt precision.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-[#191934] bg-[radial-gradient(circle_at_-30vw_24vh,_rgba(127,139,210,0.5)22%,_rgba(89,106,197,0.1)91%)] rounded-3xl p-6 min-h-[200px] flex flex-col justify-center items-center">
+            <h2 className="text-4xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,_#F5F1FF_0%,_#6633EE_100%)]">
+              25M
+            </h2>
+            <TypewriterEffectSmooth
+              words={words}
+              className="!text-sm !leading-6 !font-normal"
+            />
+          </div>
+          <div className="bg-[#191934] bg-[radial-gradient(circle_at_50vw_-12vh,_rgba(127,139,210,0.5)_25%,_rgba(89,106,197,0.1)_95%)] rounded-3xl p-6 min-h-[200px] flex flex-col justify-center items-center">
+            <h2 className="text-4xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,_#FFB266_0%,_#E9766F_49%,_#C04350_100%)]">
+              20
+            </h2>
+            <span className="text-[#B2A1FD] text-sm font-normal mb-4">
+              Top Users
+            </span>
+            <People />
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <div className="bg-[#191934] bg-[radial-gradient(circle_at_30vw_50vh,_rgba(127,139,210,0.5)_25%,_rgba(89,106,197,0.1)_95%)] rounded-3xl p-6 relative">
+            <BorderBeam
+              duration={6}
+              size={50}
+              className="from-transparent via-[#D37252] to-transparent"
+            />
+            <BorderBeam
+              duration={6}
+              delay={3}
+              size={50}
+              className="from-transparent via-[#563EEA] to-transparent"
+            />
+            <h2 className="text-2xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(45deg,_#FFFFFF_0%,_#AA9CFC_100%)] mb-4">
+              Create your own template
+            </h2>
+            <div className="space-y-2">
+              <span className="text-[#E6E3FF] text-lg font-bold block">
+                14 days trial
+              </span>
+              <span className="text-[#ACA0E4] text-base">after – $5/month</span>
+            </div>
+          </div>
+
+          <div className="bg-[#191934] bg-[radial-gradient(circle_at_50vw_-35vh,_rgba(127,139,210,0.5)_25%,_rgba(89,106,197,0.1)_95%)] rounded-3xl p-6 flex flex-col items-center space-y-4">
+            <div className="bg-[#110A2B40] rounded-full h-16 w-16 flex items-center justify-center">
+              <Sparkles className="text-white w-6 h-6" />
+            </div>
+            <Modal>
+              <ModalTrigger className="w-full">
+                <button className="relative inline-flex overflow-hidden rounded-full p-[1px] focus:outline-none w-full h-12">
+                  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                  <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-[radial-gradient(circle_at_50%_-50%,#BBA5F4_0%,#5F33D6_100%)] px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                    <Sparkles className="w-4 h-4 mr-2" />
+                    <span>Generate</span>
+                  </span>
+                </button>
+              </ModalTrigger>
+              <ModalBody className="bg-[#191934]/50 backdrop-blur-sm border-[#E6E3FF]/10">
+                <ModalContent>
+                  <h4 className="text-lg md:text-2xl text-[#E6E3FF] font-bold text-center mb-8">
+                    Book your trip to{" "}
+                    <span className="px-1 py-0.5 rounded-md bg-[#ACA0E4] border border-[#ffffff0d] text-[var(--main-bg)]">
+                      Bali
+                    </span>{" "}
+                    now! ✈️
+                  </h4>
+                  <div className="flex justify-center items-center">
+                    {images.map((image, idx) => (
+                      <motion.div
+                        key={"images" + idx}
+                        style={{
+                          rotate: Math.random() * 20 - 10,
+                        }}
+                        whileHover={{
+                          scale: 1.1,
+                          rotate: 0,
+                          zIndex: 100,
+                        }}
+                        whileTap={{
+                          scale: 1.1,
+                          rotate: 0,
+                          zIndex: 100,
+                        }}
+                        className="rounded-xl -mr-4 mt-4 p-1 bg-[#E6E3FF] dark:bg-neutral-800 dark:border-neutral-700 border border-[#E6E3FF] shrink-0 overflow-hidden"
+                      >
+                        <Image
+                          src={image || "/placeholder.svg"}
+                          alt="bali images"
+                          width="500"
+                          height="500"
+                          className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover shrink-0"
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                  <div className="py-10 flex flex-wrap gap-x-4 gap-y-6 items-start justify-start max-w-sm mx-auto">
+                    <div className="flex items-center justify-center">
+                      <PlaneIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                      <span className="text-[#E6E3FF] text-sm">
+                        5 connecting flights
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <ElevatorIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                      <span className="text-[#E6E3FF] text-sm">12 hotels</span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <VacationIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                      <span className="text-[#E6E3FF] text-sm">
+                        69 visiting spots
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <FoodIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                      <span className="text-[#E6E3FF] text-sm">
+                        Good food everyday
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <MicIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                      <span className="text-[#E6E3FF] text-sm">Open Mic</span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <ParachuteIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                      <span className="text-[#E6E3FF] text-sm">
+                        Paragliding
+                      </span>
+                    </div>
+                  </div>
+                </ModalContent>
+                <ModalFooter className="gap-4 bg-[#110A2B40] border-t border-[#E6E3FF]/10">
+                  <button className="px-2 py-1 bg-[#E6E3FF] text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-full text-sm w-28">
+                    Cancel
+                  </button>
+                  <InteractiveHoverButton>
+                    <span>Book Now</span>
+                  </InteractiveHoverButton>
+                </ModalFooter>
+              </ModalBody>
+            </Modal>
+          </div>
+
+          <div className="bg-[radial-gradient(circle_at_-30vw_-50vh,_rgba(127,139,210,0.5)_25%,_rgba(89,106,197,0.1)_95%)] rounded-3xl p-6 relative">
+            <BorderBeam
+              duration={6}
+              size={50}
+              className="from-transparent via-[#D37252] to-transparent"
+              reverse
+            />
+            <BorderBeam
+              duration={6}
+              delay={3}
+              size={50}
+              className="from-transparent via-[#563EEA] to-transparent"
+              reverse
+            />
+            <div className="space-y-4">
+              <div>
+                <span className="text-[#E6E3FF] text-lg font-bold block">
+                  Prompt Service
+                </span>
+                <span className="text-[#ACA0E4] text-base">
+                  Use pre-made templates to jumpstart creativity.
+                </span>
+              </div>
+              <div className="space-y-3">
+                <InteractiveHoverButton className="bg-[linear-gradient(45deg,_#BBA5F4_0%,_#5F33D6_100%)] w-full">
+                  <Camera />
+                </InteractiveHoverButton>
+                <InteractiveHoverButton className="w-full">
+                  <span>Rewrite</span>
+                </InteractiveHoverButton>
+                <InteractiveHoverButton className="w-full">
+                  <span>JPG PNG PDF</span>
+                </InteractiveHoverButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="hidden md:block lg:hidden">
+        <div className="grid grid-cols-3 gap-6">
+          {/* Row 1 */}
+          <div className="bg-[#191934] bg-[radial-gradient(circle_at_30vw_50vh,_rgba(127,139,210,0.5)_25%,_rgba(89,106,197,0.1)_95%)] rounded-3xl p-6 relative min-h-[300px] flex flex-col justify-between">
+            <BorderBeam
+              duration={6}
+              size={50}
+              className="from-transparent via-[#D37252] to-transparent"
+            />
+            <BorderBeam
+              duration={6}
+              delay={3}
+              size={50}
+              className="from-transparent via-[#563EEA] to-transparent"
+            />
+            <h2 className="text-2xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(45deg,_#FFFFFF_0%,_#AA9CFC_100%)]">
+              <TypingAnimation>Create your own template</TypingAnimation>
+            </h2>
+            <div>
+              <span className="text-[#E6E3FF] text-lg font-bold block">
+                <TypingAnimation>14 days trial</TypingAnimation>
+              </span>
+              <span className="text-[#ACA0E4] text-base">
+                <TypingAnimation> after – $5/month</TypingAnimation>
+              </span>
+            </div>
+          </div>
+
+          <div className="bg-[radial-gradient(circle_at_50%_105%,_rgb(187,165,244)_0%,_rgb(101,58,216)_100%)] rounded-3xl min-h-[300px] flex flex-col">
+            <div className="flex-1 flex items-center justify-center py-6">
+              <h1 className="text-[#FAF9FF] text-4xl font-bold text-center">
+                <SparklesText>Template Ai</SparklesText>
+              </h1>
+            </div>
+            <div className="flex-1 flex items-center justify-center relative">
+              <div className="bg-[var(--main-bg)] w-full h-24 rounded-t-full mx-6">
+                <Image
+                  src="/images/image.png"
+                  width={120}
+                  height={120}
+                  alt=""
+                  className="hidden absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="bg-[#191934] bg-[radial-gradient(circle_at_-30vw_24vh,_rgba(127,139,210,0.5)22%,_rgba(89,106,197,0.1)91%)] rounded-3xl p-6 flex items-center justify-center">
+              <div className="bg-[#110A2B40] rounded-full h-16 w-24 flex items-center justify-center">
+                <Sparkles className="text-white" />
+              </div>
+            </div>
+            <div className="bg-[#191934] bg-[radial-gradient(circle_at_-30vw_24vh,_rgba(127,139,210,0.5)22%,_rgba(89,106,197,0.1)91%)] rounded-3xl p-6 flex flex-col items-center justify-center">
+              <h2 className="text-4xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,_#F5F1FF_0%,_#6633EE_100%)]">
+                25M
+              </h2>
+              <TypewriterEffectSmooth
+                words={words}
+                className="!text-base !leading-6 !font-normal"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 bg-[#653ad8]/30 rounded-3xl p-6">
+            <div className="space-y-3">
+              <div className="bg-[#110A240] rounded-full h-12 w-12 flex p-1">
+                <button className="bg-[radial-gradient(circle_at_50%_0%,_#FFDEAD_0%,_#E27F5A_47%,_#691616_100%)] rounded-full w-full flex items-center justify-center">
+                  <GitBranch className="text-white w-4 h-4" />
+                </button>
+              </div>
+              <span className="text-[#E6E3FF] text-base font-bold block">
+                Branching paths
+              </span>
+              <span className="text-[#ACA0E4] text-sm">
+                Explore multiple prompt directions.
+              </span>
+            </div>
+            <div className="space-y-3">
+              <div className="bg-[#110A240] rounded-full h-12 w-12 flex p-1">
+                <button className="bg-[radial-gradient(circle_at_50%_0%,_#BBA5F4_0%,_#5F33D6_100%)] rounded-full w-full flex items-center justify-center">
+                  <GitBranch className="text-white w-4 h-4" />
+                </button>
+              </div>
+              <span className="text-[#E6E3FF] text-base font-bold block">
+                Ai journey
+              </span>
+              <span className="text-[#ACA0E4] text-sm">
+                Boost your prompt precision.
+              </span>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="bg-[#191934] bg-[radial-gradient(circle_at_50vw_-12vh,_rgba(127,139,210,0.5)_25%,_rgba(89,106,197,0.1)_95%)] rounded-3xl p-6 flex flex-col items-center justify-center">
+              <h2 className="text-4xl font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,_#FFB266_0%,_#E9766F_49%,_#C04350_100%)]">
+                20
+              </h2>
+              <span className="text-[#B2A1FD] text-base font-normal mb-3">
+                Top Users
+              </span>
+              <People />
+            </div>
+            <div className="bg-[#191934] bg-[radial-gradient(circle_at_50vw_-35vh,_rgba(127,139,210,0.5)_25%,_rgba(89,106,197,0.1)_95%)] rounded-3xl p-6 flex items-center justify-center">
+              <Modal>
+                <ModalTrigger className="w-full">
+                  <button className="relative inline-flex overflow-hidden rounded-full p-[1px] focus:outline-none w-full h-12">
+                    <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                    <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-[radial-gradient(circle_at_50%_-50%,#BBA5F4_0%,#5F33D6_100%)] px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                      <Sparkles className="w-4 h-4 mr-2" />
+                      <span>Generate</span>
+                    </span>
+                  </button>
+                </ModalTrigger>
+                <ModalBody className="bg-[#191934]/50 backdrop-blur-sm border-[#E6E3FF]/10">
+                  <ModalContent>
+                    <h4 className="text-lg md:text-2xl text-[#E6E3FF] font-bold text-center mb-8">
+                      Book your trip to{" "}
+                      <span className="px-1 py-0.5 rounded-md bg-[#ACA0E4] border border-[#ffffff0d] text-[var(--main-bg)]">
+                        Bali
+                      </span>{" "}
+                      now! ✈️
+                    </h4>
+                    <div className="flex justify-center items-center">
+                      {images.map((image, idx) => (
+                        <motion.div
+                          key={"images" + idx}
+                          style={{
+                            rotate: Math.random() * 20 - 10,
+                          }}
+                          whileHover={{
+                            scale: 1.1,
+                            rotate: 0,
+                            zIndex: 100,
+                          }}
+                          whileTap={{
+                            scale: 1.1,
+                            rotate: 0,
+                            zIndex: 100,
+                          }}
+                          className="rounded-xl -mr-4 mt-4 p-1 bg-[#E6E3FF] dark:bg-neutral-800 dark:border-neutral-700 border border-[#E6E3FF] shrink-0 overflow-hidden"
+                        >
+                          <Image
+                            src={image || "/placeholder.svg"}
+                            alt="bali images"
+                            width="500"
+                            height="500"
+                            className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover shrink-0"
+                          />
+                        </motion.div>
+                      ))}
+                    </div>
+                    <div className="py-10 flex flex-wrap gap-x-4 gap-y-6 items-start justify-start max-w-sm mx-auto">
+                      <div className="flex items-center justify-center">
+                        <PlaneIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                        <span className="text-[#E6E3FF] text-sm">
+                          5 connecting flights
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-center">
+                        <ElevatorIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                        <span className="text-[#E6E3FF] text-sm">
+                          12 hotels
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-center">
+                        <VacationIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                        <span className="text-[#E6E3FF] text-sm">
+                          69 visiting spots
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-center">
+                        <FoodIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                        <span className="text-[#E6E3FF] text-sm">
+                          Good food everyday
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-center">
+                        <MicIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                        <span className="text-[#E6E3FF] text-sm">Open Mic</span>
+                      </div>
+                      <div className="flex items-center justify-center">
+                        <ParachuteIcon className="mr-1 text-[#E6E3FF] h-4 w-4" />
+                        <span className="text-[#E6E3FF] text-sm">
+                          Paragliding
+                        </span>
+                      </div>
+                    </div>
+                  </ModalContent>
+                  <ModalFooter className="gap-4 bg-[#110A2B40] border-t border-[#E6E3FF]/10">
+                    <button className="px-2 py-1 bg-[#E6E3FF] text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-full text-sm w-28">
+                      Cancel
+                    </button>
+                    <InteractiveHoverButton>
+                      <span>Book Now</span>
+                    </InteractiveHoverButton>
+                  </ModalFooter>
+                </ModalBody>
+              </Modal>
+            </div>
+          </div>
+
+          <div className="bg-[radial-gradient(circle_at_-30vw_-50vh,_rgba(127,139,210,0.5)_25%,_rgba(89,106,197,0.1)_95%)] rounded-3xl p-6 relative">
+            <BorderBeam
+              duration={6}
+              size={50}
+              className="from-transparent via-[#D37252] to-transparent"
+              reverse
+            />
+            <BorderBeam
+              duration={6}
+              delay={3}
+              size={50}
+              className="from-transparent via-[#563EEA] to-transparent"
+              reverse
+            />
+            <div className="space-y-4">
+              <div>
+                <span className="text-[#E6E3FF] text-lg font-bold block">
+                  <TypingAnimation>Prompt Service</TypingAnimation>
+                </span>
+                <span className="text-[#ACA0E4] text-base">
+                  <TypingAnimation>
+                    Use pre-made templates to jumpstart creativity.
+                  </TypingAnimation>
+                </span>
+              </div>
+              <div className="space-y-3">
+                <InteractiveHoverButton className="bg-[linear-gradient(45deg,_#BBA5F4_0%,_#5F33D6_100%)] w-full">
+                  <Camera />
+                </InteractiveHoverButton>
+                <InteractiveHoverButton className="w-full">
+                  <span>Rewrite</span>
+                </InteractiveHoverButton>
+                <InteractiveHoverButton className="w-full">
+                  <span>JPG PNG PDF</span>
+                </InteractiveHoverButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="hidden lg:grid grid-cols-4 grid-rows-2 gap-7 flex-1 h-full">
         <div
           className="h-full rounded-3xl flex items-center justify-center bg-[#191934]
             bg-[radial-gradient(circle_at_30vw_50vh,_rgba(127,139,210,0.5)_25%,_rgba(89,106,197,0.1)_95%)] relative p-[25px]"
@@ -374,7 +848,7 @@ export default function Home() {
                               className="rounded-xl -mr-4 mt-4 p-1 bg-[#E6E3FF] dark:bg-neutral-800 dark:border-neutral-700 border border-[#E6E3FF] shrink-0 overflow-hidden"
                             >
                               <Image
-                                src={image}
+                                src={image || "/placeholder.svg"}
                                 alt="bali images"
                                 width="500"
                                 height="500"

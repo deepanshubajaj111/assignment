@@ -1,6 +1,6 @@
-import { Particles } from "@/components/magicui/particles";
 import "./globals.css";
 import type { Metadata } from "next";
+import { Particles } from "@/components/magicui/particles";
 
 export const metadata: Metadata = {
   title: "Create Next App",
