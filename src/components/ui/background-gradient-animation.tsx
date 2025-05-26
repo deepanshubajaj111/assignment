@@ -92,7 +92,7 @@ export const BackgroundGradientAnimation = ({
     }
     move();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tgX, tgY]); // intentionally not including curX/curY to avoid infinite loop
+  }, [tgX, tgY]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
